@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Solar Monitor · บ้านพักอาศัย 10 kWp</title>
+<meta name="description" content="สรุปการผลิตไฟฟ้าโซลาร์เซลล์ของบ้านพักอาศัยขนาด 10 kWp รายอุปกรณ์และภาพรวมทั้ง plant">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-alt:#F5F5F7; --surface:#FFFFFF;
+  --fg:#1D1D1F; --fg-muted:#6E6E73; --fg-quiet:#86868B; --line:#D2D2D7;
+  --accent:#0071E3; --accent-link:#0066CC; --accent-fg:#FFFFFF;
+  --warn:#8F4A05; --warn-bg:#FCEFD9; --ok:#1B7F4B; --ok-bg:#E3F4EA;
+  --r-pill:980px; --r-card:18px; --r-input:12px; --card-line:transparent;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro TH","SF Pro Text","Noto Sans Thai","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#000000; --bg-alt:#161617; --surface:#1D1D1F; --card-line:#424245;
+  --fg:#F5F5F7; --fg-muted:#A1A1A6; --line:#424245;
+  --accent:#2997FF; --accent-link:#2997FF; --warn:#F2B25C; --warn-bg:#2B2214; --ok:#5FD08C; --ok-bg:#12261A; color-scheme:dark}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.5 var(--font);letter-spacing:-.022em;font-variant-numeric:tabular-nums}
+a{color:var(--accent-link);text-decoration:none}a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.gnav{position:sticky;top:0;z-index:5;height:44px;background:rgba(0,0,0,.8);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);color:#F5F5F7}
+.gnav div{max-width:1180px;margin:0 auto;height:100%;padding:0 16px;display:flex;align-items:center;justify-content:space-between;font-size:12px;letter-spacing:-.12px}
+.gnav b{font-weight:600;font-size:14px}
+.band{padding:48px 16px}.band.alt{background:var(--bg-alt)}
+.in{max-width:1180px;margin:0 auto}.txt{max-width:980px}
+.eyebrow{font-size:12px;line-height:16px;color:var(--fg-quiet);letter-spacing:-.12px;margin:0 0 8px}
+h1{font-size:clamp(32px,6.4vw,56px);line-height:1.1;font-weight:600;letter-spacing:.064px;margin:0 0 16px}
+h2{font-size:clamp(26px,4vw,32px);line-height:1.15;font-weight:600;letter-spacing:.064px;margin:0 0 8px}
+.lead{font-size:clamp(19px,2.6vw,24px);line-height:1.4;color:var(--fg-muted);margin:0 0 24px;letter-spacing:.216px}
+.sub{color:var(--fg-muted);margin:0 0 32px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;min-height:28px;padding:4px 12px;border-radius:var(--r-pill);background:var(--bg-alt);font-size:12px;line-height:16px;color:var(--fg)}
+.band.alt .chip{background:var(--surface)}
+.chip.warn{background:var(--warn-bg);color:var(--warn)}.chip.ok{background:var(--ok-bg);color:var(--ok)}
+.grid{display:grid;gap:16px}
+.g4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.card{background:var(--surface);border-radius:var(--r-card);padding:24px;border:1px solid var(--card-line)}
+.band:not(.alt) .card{background:var(--bg-alt);border-color:transparent}
+@media (prefers-color-scheme:dark){.band:not(.alt) .card{background:var(--surface);border-color:var(--card-line)}}
+.lbl{font-size:12px;line-height:16px;color:var(--fg-quiet);margin:0 0 8px}
+.kpi{font-size:34px;line-height:1.1;font-weight:600;margin:0}
+.kpi small{font-size:17px;font-weight:400;color:var(--fg-muted);margin-left:4px}
+.note{font-size:13px;color:var(--fg-muted);margin:8px 0 0}
+.card h3{font-size:21px;line-height:1.2;font-weight:600;margin:0 0 4px}
+.card .meta{font-size:12px;color:var(--fg-quiet);margin:0 0 16px}
+dl{margin:0}
+.row{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+.row:first-child{border-top:0}.row dt{color:var(--fg-muted)}.row dd{margin:0;text-align:right;font-weight:500}
+.bar{height:6px;border-radius:3px;background:var(--line);overflow:hidden;margin-top:12px}.bar i{display:block;height:100%;background:var(--accent);border-radius:3px}
+.warnbox{background:var(--warn-bg);color:var(--warn);border-radius:var(--r-card);padding:20px 24px;font-size:15px}
+.warnbox b{font-weight:600}
+button.link{background:none;border:0;padding:0;min-height:44px;font:inherit;color:var(--accent-link);cursor:pointer}
+button.link:hover{text-decoration:underline}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:420px}
+th{font-size:12px;font-weight:400;color:var(--fg-quiet);text-align:right;padding:8px 12px;border-bottom:1px solid var(--line)}
+td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:right}
+th:first-child,td:first-child{text-align:left}
+#chart svg{width:100%;height:auto;display:block}
+#chart text{font-family:var(--font);fill:var(--fg)}
+#chart .val{font-weight:600;font-size:13px}#chart .cat{font-size:13px;fill:var(--fg-muted)}
+#chart .axis{stroke:var(--line);stroke-width:1}
+#chart rect.b{fill:var(--accent)}#chart g.h:hover rect.b,#chart g.h:focus rect.b{opacity:.8}
+#tip{position:fixed;pointer-events:none;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:13px;box-shadow:0 4px 16px rgba(0,0,0,.12);opacity:0;transition:opacity .15s ease-out;z-index:9}
+#tip b{font-weight:600}#tip span{color:var(--fg-muted)}
+footer{background:var(--bg-alt);padding:32px 16px 48px;font-size:12px;line-height:1.5;color:var(--fg-quiet)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<nav class="gnav"><div><b>Solar Monitor</b><span>Huawei FusionSolar · สรุปข้อมูล</span></div></nav>
+
+<header class="band"><div class="in txt">
+  <p class="eyebrow">บ้านพักอาศัย · ระบบ 10 kWp</p>
+  <h1>ตอนนี้ผลิตไฟได้ 1.45 kW</h1>
+  <p class="lead">ผลิตวันนี้ 30.88 kWh และไม่มี alarm แต่ inverter อยู่ในสถานะจำกัดกำลัง เพราะแบตเตอรี่เต็ม 100%</p>
+  <div class="chips">
+    <span class="chip ok">✓ Alarm 0 รายการ</span>
+    <span class="chip warn">⚠ Inverter: power limited</span>
+    <span class="chip">อ่านเมื่อ 30 ก.ย. 2026 ประมาณ 15:15 น.</span>
+  </div>
+</div></header>
+
+<section class="band alt"><div class="in">
+  <h2>ภาพรวมทั้ง plant</h2>
+  <p class="sub">ค่าจากหน้า Overview ของ plant</p>
+  <div class="grid g4">
+    <div class="card"><p class="lbl">ผลิตวันนี้</p><p class="kpi">30.88<small>kWh</small></p></div>
+    <div class="card"><p class="lbl">ใช้ไฟวันนี้</p><p class="kpi">24.05<small>kWh</small></p></div>
+    <div class="card"><p class="lbl">ผลิตสะสม</p><p class="kpi">5.53<small>MWh</small></p></div>
+    <div class="card"><p class="lbl">Alarm</p><p class="kpi">0<small>รายการ</small></p></div>
+  </div>
+</div></section>
+
+<section class="band"><div class="in">
+  <h2>กำลังไฟขณะนี้</h2>
+  <p class="sub">การไหลของไฟฟ้าระหว่าง PV, บ้าน, แบตเตอรี่ และกริด</p>
+  <div class="grid g4">
+    <div class="card"><p class="lbl">PV ผลิต</p><p class="kpi">1.454<small>kW</small></p><div class="bar" aria-hidden="true"><i style="width:14.5%"></i></div><p class="note">ประมาณ 14.5% ของพิกัด 10 kW</p></div>
+    <div class="card"><p class="lbl">บ้านใช้ (Load)</p><p class="kpi">1.460<small>kW</small></p></div>
+    <div class="card"><p class="lbl">แบตเตอรี่</p><p class="kpi">0.000<small>kW</small></p><p class="note">SOC 100% ไม่ชาร์จ ไม่จ่าย</p></div>
+    <div class="card"><p class="lbl">กริด</p><p class="kpi">0.006<small>kW</small></p><p class="note">แทบไม่ซื้อ ไม่ขายไฟ</p></div>
+  </div>
+  <p class="note" style="margin-top:16px">ตัวเลขแต่ละกล่องอ่านจากคนละหน้าจอ ต่างเวลากันเล็กน้อย จึงอาจไม่บวกลบกันพอดี</p>
+</div></section>
+
+<section class="band alt"><div class="in">
+  <h2>พลังงานวันนี้</h2>
+  <p class="sub">หน่วย kWh · วางเมาส์บนแท่งเพื่อดูค่า</p>
+  <div class="card">
+    <div id="chart" role="img" aria-label="แผนภูมิแท่งพลังงานวันนี้ แยกตามรายการ"></div>
+    <div id="tablev" hidden class="tw"><table><thead><tr><th>รายการ</th><th>kWh</th></tr></thead><tbody id="tb"></tbody></table></div>
+    <button class="link" id="toggle" type="button" aria-pressed="false">ดูเป็นตาราง ›</button>
+  </div>
+</div></section>
+
+<section class="band"><div class="in">
+  <h2>รายอุปกรณ์</h2>
+  <p class="sub">ค่า real-time ที่อ่านได้จากแต่ละอุปกรณ์</p>
+  <div class="grid g3">
+    <article class="card">
+      <h3>Inverter-12</h3><p class="meta">SUN2000-10K-MAP0 · พิกัด 10 kW</p>
+      <dl>
+        <div class="row"><dt>สถานะ</dt><dd>Grid connected: power limited</dd></div>
+        <div class="row"><dt>Active power</dt><dd>1.239 kW</dd></div>
+        <div class="row"><dt>ผลิตวันนี้</dt><dd>23.49 kWh</dd></div>
+        <div class="row"><dt>ผลิตสะสม</dt><dd>5,477.76 kWh</dd></div>
+        <div class="row"><dt>PV1</dt><dd>341.1 V · 1.98 A</dd></div>
+        <div class="row"><dt>PV2</dt><dd>343.1 V · 1.99 A</dd></div>
+        <div class="row"><dt>ความถี่ / Power factor</dt><dd>49.96 Hz / 1.000</dd></div>
+        <div class="row"><dt>อุณหภูมิภายใน</dt><dd>61.6 °C</dd></div>
+      </dl>
+    </article>
+    <article class="card">
+      <h3>Battery-1</h3><p class="meta">LUNA2000-10KW-C1 · 13.8 kWh · 2 pack</p>
+      <dl>
+        <div class="row"><dt>สถานะ</dt><dd>Operating</dd></div>
+        <div class="row"><dt>SOC</dt><dd>100%</dd></div>
+        <div class="row"><dt>ชาร์จ / จ่ายขณะนี้</dt><dd>0.000 kW</dd></div>
+        <div class="row"><dt>ชาร์จวันนี้</dt><dd>20.19 kWh</dd></div>
+        <div class="row"><dt>จ่ายออกวันนี้</dt><dd>12.68 kWh</dd></div>
+        <div class="row"><dt>อุณหภูมิ pack</dt><dd>44–50 °C</dd></div>
+        <div class="row"><dt>Battery health check</dt><dd>Pending</dd></div>
+      </dl>
+    </article>
+    <article class="card">
+      <h3>Meter-ExternMeter</h3><p class="meta">DTSU666_H · มิเตอร์ import/export</p>
+      <dl>
+        <div class="row"><dt>สถานะ</dt><dd>Normal</dd></div>
+        <div class="row"><dt>Active power</dt><dd>0.017 kW</dd></div>
+        <div class="row"><dt>ซื้อสะสม (import)</dt><dd>667.09 kWh</dd></div>
+        <div class="row"><dt>แรงดันเฟส A / B / C</dt><dd>233.3 / 233.7 / 234.8 V</dd></div>
+        <div class="row"><dt>กระแสเฟส A / B / C</dt><dd>0.6 / 1.5 / 0.7 A</dd></div>
+      </dl>
+    </article>
+    <article class="card">
+      <h3>Optimizer 16 ตัว</h3><p class="meta">MERC-600W-PA0 · 2 string × 8 ตัว</p>
+      <dl>
+        <div class="row"><dt>สถานะ</dt><dd>Operating ครบ 16 ตัว</dd></div>
+        <div class="row"><dt>อุณหภูมิ</dt><dd>53.0–59.9 °C</dd></div>
+        <div class="row"><dt>ผลิตสะสมต่อตัว</dt><dd>386.5–400.6 kWh</dd></div>
+      </dl>
+      <p class="note">ดูตารางรายตัวด้านล่าง</p>
+    </article>
+    <article class="card">
+      <h3>เครื่องชาร์จ EV</h3><p class="meta">SCharger-22KT-S0 · 22 kW</p>
+      <dl>
+        <div class="row"><dt>สถานะ</dt><dd>Unknown</dd></div>
+        <div class="row"><dt>กำลังชาร์จ / พลังงาน</dt><dd>ไม่มีข้อมูล</dd></div>
+        <div class="row"><dt>จำกัดกำลังชาร์จ</dt><dd>7.00 kW</dd></div>
+      </dl>
+    </article>
+    <article class="card">
+      <h3>SmartGuard · SmartHEMS</h3><p class="meta">Backup box และ energy assistant</p>
+      <dl>
+        <div class="row"><dt>สถานะ</dt><dd>ออนไลน์ทั้งคู่</dd></div>
+        <div class="row"><dt>ค่าละเอียด</dt><dd>ไม่ได้อ่าน</dd></div>
+      </dl>
+    </article>
+  </div>
+</div></section>
+
+<section class="band alt"><div class="in">
+  <h2>Optimizer รายตัว</h2>
+  <p class="sub">ตารางจากหน้า Real-Time Device Data ของ optimizer</p>
+  <div class="card tw"><table>
+    <thead><tr><th>ตัวที่</th><th>ผลิตสะสม (kWh)</th><th>Output power (W)</th><th>Input (V)</th><th>Input (A)</th><th>อุณหภูมิ (°C)</th></tr></thead>
+    <tbody id="opt"></tbody>
+  </table></div>
+</div></section>
+
+<section class="band"><div class="in txt">
+  <h2>ข้อสังเกตเกี่ยวกับข้อมูล</h2>
+  <div class="warnbox">
+    <p style="margin:0 0 12px"><b>Optimizer ไม่สอดคล้องกับ inverter</b> ตารางแสดง output ตัวละประมาณ 450 W รวม 16 ตัวราว 7.2 kW แต่ inverter ผลิตจริง 1.24 kW จึงไม่ใช้ตัวเลขนี้เป็นกำลังผลิต และควรถือว่าตารางนั้นอาจไม่ใช่ค่าล่าสุด</p>
+    <p style="margin:0 0 12px"><b>ผลิตวันนี้ไม่ตรงกัน</b> ค่าระดับ plant คือ 30.88 kWh แต่ inverter รายงาน 23.49 kWh ยังไม่ทราบสาเหตุ</p>
+    <p style="margin:0"><b>สาเหตุ power limited</b> น่าจะเป็นเพราะแบตเตอรี่เต็มและระบบคุมไม่ให้ขายไฟเข้ากริด เป็นข้อสันนิษฐาน ยังไม่ได้ตรวจการตั้งค่า</p>
+  </div>
+</div></section>
+
+<footer><div class="in txt">
+  แหล่งข้อมูล: หน้าเว็บ FusionSolar (อ่านผ่านเบราว์เซอร์ ไม่ใช่การเรียก API โดยตรง) เมื่อ 30 ก.ย. 2026 ประมาณ 15:15 น. เวลาไทย · หน้านี้เป็นภาพนิ่งของข้อมูลช่วงนั้น ไม่อัปเดตอัตโนมัติ · ไม่เกี่ยวข้องกับ Huawei หรือ Apple
+</div></footer>
+<div id="tip" role="tooltip"></div>
+
+<script>
+const ENERGY=[["ผลิตวันนี้ (plant)",30.88],["ผลิตวันนี้ (inverter)",23.49],["บ้านใช้ไฟ",24.05],["แบตเตอรี่ชาร์จ",20.19],["แบตเตอรี่จ่ายออก",12.68],["ซื้อจากกริด",0.69],["ขายเข้ากริด",0.01]];
+const OPT=[["1.1.1",398.165,453.0,37.1,12.42,58.9],["1.1.2",395.303,449.8,37.1,12.37,59.2],["1.1.3",394.603,454.1,37.1,12.47,58.9],["1.1.4",390.472,449.8,37.1,12.40,59.4],["1.1.5",400.640,452.3,37.1,12.44,59.3],["1.1.6",396.185,451.8,37.2,12.36,57.9],["1.1.7",393.171,445.4,36.9,12.31,59.9],["1.1.8",392.109,450.5,37.2,12.34,58.9],["1.2.1",388.872,452.8,37.5,12.33,57.5],["1.2.2",391.160,453.8,37.7,12.27,53.0],["1.2.3",392.564,452.9,37.5,12.29,56.0],["1.2.4",390.403,451.2,37.3,12.31,55.0],["1.2.5",386.935,449.9,37.5,12.28,57.6],["1.2.6",386.507,450.6,37.5,12.24,55.5],["1.2.7",391.662,454.2,37.6,12.29,55.8],["1.2.8",392.419,454.6,37.6,12.32,56.1]];
+const f=(n,d)=>n.toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+document.getElementById("opt").innerHTML=OPT.map(r=>`<tr><td>${r[0]}</td><td>${f(r[1],3)}</td><td>${f(r[2],1)}</td><td>${f(r[3],1)}</td><td>${f(r[4],2)}</td><td>${f(r[5],1)}</td></tr>`).join("");
+document.getElementById("tb").innerHTML=ENERGY.map(r=>`<tr><td>${r[0]}</td><td>${f(r[1],2)}</td></tr>`).join("");
+const tip=document.getElementById("tip");
+function draw(){
+  const cw=document.getElementById("chart").clientWidth||640,W=Math.max(300,Math.min(cw,640)),L=W<500?140:176,R=56,T=8,H=36,B=8,n=ENERGY.length,max=Math.max(...ENERGY.map(e=>e[1])),h=T+n*H+B;
+  let s=`<svg viewBox="0 0 ${W} ${h}" preserveAspectRatio="xMidYMid meet"><line class="axis" x1="${L}" x2="${L}" y1="${T}" y2="${h-B}"/>`;
+  ENERGY.forEach((e,i)=>{const y=T+i*H,w=Math.max(2,(W-L-R)*e[1]/max);
+    s+=`<g class="h" tabindex="0" data-i="${i}"><rect x="0" y="${y}" width="${W}" height="${H}" fill="transparent"/><text class="cat" x="${L-12}" y="${y+H/2+4}" text-anchor="end">${e[0]}</text><rect class="b" x="${L}" y="${y+7}" width="${w}" height="${H-14}" rx="4"/><text class="val" x="${L+w+8}" y="${y+H/2+4}">${f(e[1],2)}</text></g>`;});
+  document.getElementById("chart").innerHTML=s+"</svg>";
+  document.querySelectorAll("#chart g.h").forEach(g=>{
+    const e=ENERGY[+g.dataset.i],show=ev=>{tip.innerHTML=`<span>${e[0]}</span><br><b>${f(e[1],2)} kWh</b>`;tip.style.opacity=1;
+      const r=g.getBoundingClientRect(),x=ev.clientX!==undefined&&ev.type==="mousemove"?ev.clientX+14:r.left+r.width/2,y=ev.type==="mousemove"?ev.clientY+14:r.top;tip.style.left=Math.min(x,innerWidth-170)+"px";tip.style.top=y+"px"};
+    g.addEventListener("mousemove",show);g.addEventListener("focus",show);
+    g.addEventListener("mouseleave",()=>tip.style.opacity=0);g.addEventListener("blur",()=>tip.style.opacity=0);});
+}
+draw();addEventListener("resize",draw);
+const tg=document.getElementById("toggle");
+tg.addEventListener("click",()=>{const on=tg.getAttribute("aria-pressed")!=="true";tg.setAttribute("aria-pressed",on);
+  document.getElementById("chart").hidden=on;document.getElementById("tablev").hidden=!on;tg.textContent=on?"ดูเป็นแผนภูมิ ›":"ดูเป็นตาราง ›";});
+</script>
+</body>
+</html>
